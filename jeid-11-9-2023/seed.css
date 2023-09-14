@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.seed{
+    margin-top: 0;
+}
+.explain{
+    display: inline-flex;
+}
+.amagambo{
+    margin-right: 10px;
+    width: 45%;
+}
+.seeds1{
+    float: right;
+    margin-right: 0px;
+    margin-left: 300px;
+}
+.amagambo p{
+    margin-bottom: 60px;
+    margin-top: 10px;
+}

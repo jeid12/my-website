@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Training Program</title>
+    <link rel="stylesheet" href="Training.css">
+</head>
+<body>
+    <div class="head">
+        <ul>
+            <li><img src="./images/logo.png" alt="MY LOGO" height="50px"> </li>
+          <!-- <li><input type="search"><button>search</button></li>
+            <li><a href="#">Store</a></li>--> 
+            <li><a href="./php/cart.php">Charts</a></li>
+            
+        </ul>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            <li class="active"><a href="index.html">Home</a></li>
+            
+            <li><a href="aboutus.html">About Us</a>
+           
+            </li>
+            <li><a href="#">Services</a>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="seed.html">Seeds</a></li>
+                        <li><a href="#">Fertilizers</a></li>
+                        <li><a href="./php/addProduct.php">Products</a>
+                            <div class="subproduct">
+                          <!--  <ul >
+                                <li><a href="#">Animals</a></li>
+                                <li><a href="#">Agricutiral</a></li>
+                                <li><a href="#">Industrial</a></li>
+                            </ul></li>-->
+
+                    </ul></li>
+                   <!--  <li><a href="#">Crops</a></li>-->
+
+            <li><a href="client1.html">Clients</a>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="./php/FarmerProfile.php">Farmers</a></li>
+                        <li><a href="./php/utilities.php">Buyer</a></li>
+                        <li><a href="#">Bloaker</a></li>
+                    </ul>-->
+            </li>
+           <!-- <li><a href="./php/">Parterners</a></li>
+            <li><a href="./php/">Pricing</a></li>-->
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    <header>
+        <h1>Empowering Farmers Through Education</h1>
+       
+        <h2>Join Our Training Program Today</h2>
+    </header>
+
+    <section id="courses">
+        <h2>Our Courses</h2>
+        <div class="course">
+            <h3>Course 1: Crop Management</h3>
+            <p>Crop management refers to the strategic planning and execution 
+                of agricultural practices to optimize crop production and overall f
+                arm efficiency. It involves decisions related to planting, cultivation, 
+                irrigation, fertilization, pest and disease control, and harvesting. Effective crop m
+                anagement aims to maximize yields while minimizing resource use and environmental impact, 
+                contributing to sustainable agriculture. It also includes monitoring crop health and adapting
+                 practices to changing conditions to ensure a successful harvest. Additionally, crop rotation and soil
+                  management are integral components of
+                 crop management strategies to maintain soil health and crop diversity.</p>
+        </div>
+        <div class="course">
+            <h3>Course 2: Soil Health</h3>
+            <p>Soil health refers to the overall well-being and quality of soil in terms
+                 of its ability to sustain and support plant life, maintain environmental balance,
+                  and promote agricultural productivity. 
+                It is a critical component of sustainable agriculture and ecosystem health.</p>
+        </div>
+        <div class="course">
+            <h3>Course 3: Sustainable Farming</h3>
+            <p>Sustainable farming is an agricultural practice that focuses on 
+                long-term environmental and economic viability. It aims to minimize negative 
+                impacts on the environment, such as soil degradation and pollution, while conserving 
+                natural resources like water and biodiversity. Sustainable farming practices prioritize the 
+                use of organic fertilizers, crop rotation, and integrated pest management to ensure soil health and reduce the reliance on chemical inputs. Overall, sustainable farming seeks to meet the present needs for food production without 
+                compromising the ability of future generations to do the same.</p>
+        </div>
+    </section>
+
+    
+
+    <section id="enrollment">
+        <h2>Enroll Now</h2>
+        <p>Click the button below to enroll in our training program:</p>
+        <button id="enroll-button">Enroll Now</button>
+    </section>
+
+
+
+  
+
+    <footer>
+        <p>&copy; 2023 Farmers Training Program</p>
+    </footer>
+
+    <script src="">// JavaScript to add interactivity to the webpage
+
+        // Store the list of courses and their completion status in an object
+        const courses = [
+            { name: "Course 1: Crop Management", completed: false },
+            { name: "Course 2: Soil Health", completed: false },
+            { name: "Course 3: Sustainable Farming", completed: false }
+        ];
+        
+        // Function to update the course completion status
+        function updateCourseStatus(courseIndex) {
+            courses[courseIndex].completed = !courses[courseIndex].completed;
+            displayDashboard();
+        }
+        
+        // Function to display the courses on the webpage
+        function displayCourses() {
+            const coursesSection = document.getElementById("courses");
+        
+            coursesSection.innerHTML = "<h2>Our Courses</h2>";
+        
+            courses.forEach((course, index) => {
+                const courseDiv = document.createElement("div");
+                courseDiv.classList.add("course");
+        
+                const courseName = document.createElement("h3");
+                courseName.textContent = course.name;
+        
+                const courseDescription = document.createElement("p");
+                courseDescription.textContent = "Description of " + course.name;
+        
+                const courseStatus = document.createElement("p");
+                courseStatus.textContent = course.completed ? "Status: Done" : "Status: Incomplete";
+        
+                const completeButton = document.createElement("button");
+                completeButton.textContent = course.completed ? "Mark Incomplete" : "Mark Done";
+                completeButton.addEventListener("click", () => {
+                    updateCourseStatus(index);
+                    displayCourses();
+                });
+        
+                courseDiv.appendChild(courseName);
+                courseDiv.appendChild(courseDescription);
+                courseDiv.appendChild(courseStatus);
+                courseDiv.appendChild(completeButton);
+        
+                coursesSection.appendChild(courseDiv);
+            });
+        }
+        
+        // Function to display user's dashboard content
+        function displayDashboard() {
+            const contentContainer = document.getElementById("content-container");
+            contentContainer.innerHTML = ''; // Clear previous content
+        
+            courses.forEach(course => {
+                if (course.completed) {
+                    const courseInfo = document.createElement("p");
+                    courseInfo.textContent = `You have completed: ${course.name}`;
+                    contentContainer.appendChild(courseInfo);
+                }
+            });
+        }
+        
+        // Call the displayCourses function to initially display the courses
+        displayCourses();
+        </script>
+</body>
+</html>
